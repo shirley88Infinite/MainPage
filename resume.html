@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Resume - Unity Developer</title>
+    <meta name="description" content="Unity developer resume and skills summary.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <!-- 网站图标 favicon 文件位置：assets/favicon.svg -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="brand" href="index.html">Unity Dev</a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resume.html" class="active">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container narrow">
+        <section class="resume" aria-labelledby="resume-heading">
+            <div class="section-head">
+                <h1 id="resume-heading">Resume</h1>
+                <!-- 将PDF 简历文件放到 assets/resume.pdf 位置，或修改下面的 href 路径 -->
+                <a class="btn" id="download-resume" href="assets/resume.pdf" download>Download PDF</a>
+            </div>
+
+            <article class="resume-card">
+                <h2>About</h2>
+                <p>Unity Developer with hands-on experience in building modular gameplay systems, scalable UI architecture, and real-time networking using C#, Protobuf, and Photon. Worked across genres including survival, multiplayer FPS, and card-based strategy. Able to build clean code from scratch and quickly adapt to existing codebases. Passionate about creating intuitive and engaging player experiences in collaborative development environments.</p>
+            </article>
+
+            <article class="resume-card">
+                <h2>Skills</h2>
+                <ul class="kv">
+                    <li><strong>Languages</strong><span>C#</span></li>
+                    <li><strong>Engines</strong><span>Unity (primary, gameplay & optimization)<br>Unreal (familiar: Blueprints, basics)</span></li>
+                    <li><strong>Systems</strong><span>UI frameworks (UGUI, NGUI)<br>event-driven architecture, object pooling<br>async scene management</span></li>
+                    <li><strong>Networking</strong><span>Socket communication (TCP, Protobuf)<br>Photon SDK multiplayer</span></li>
+                    <li><strong>Data</strong><span>JSON, XML, binary serialization<br>PlayerPrefs</span></li>
+                    <li><strong>Rendering</strong><span>Shader Graph, VFX Graph<br>post-processing, simple custom shaders</span></li>
+                    <li><strong>Performance</strong><span>Profiler, Burst, Jobs<br>memory optimization</span></li>
+                    <li><strong>Tooling</strong><span>Custom inspectors, ScriptableObject pipelines<br>SDK integration (Android APIs)</span></li>
+                    <li><strong>Collaboration</strong><span>Git, code review</span></li>
+                </ul>
+            </article>
+
+            <article class="resume-card">
+                <h2>Experience</h2>
+                <ul class="timeline">
+                    <li>
+                        <div>
+                            <h3>Unity Developer</h3>
+                            <p class="muted">Oct 2024 – Present · Wilderness Elite (Multiplayer FPS Demo Project)</p>
+                            <p>• Designed and implemented core FPS mechanics (movement, animation, shooting, weapon switching).<br>
+                            • Built event-driven systems for UI, health, ammo, and feedback.<br>
+                            • Integrated TCP sockets + Protobuf for real-time networking; Photon for room management.<br>
+                            • Developed AI spawning with patrol/combat state machines.<br>
+                            • Applied object pooling for performance and modular gameplay structure.<br>
+                            • Created multi-layer UI system with dynamic loading.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h3>Project Initiator & Unity Programmer</h3>
+                            <p class="muted">Jul 2024 – Sep 2024 · GMTK Game Jam & Indie Game — Blood Rising (2D Card Strategy Game)</p>
+                            <p>• Developed core combat system and modular UI architecture in Unity.<br>
+                            • Designed event-driven framework for card effects and state transitions.<br>
+                            • Collaborated with artist to prototype AI-assisted card design pipeline.<br>
+                            • Delivered functional vertical slice within jam scope; continued post-jam polish.<br>
+                            • <a href="https://store.steampowered.com/app/3178660/Blood_Rising/" target="_blank" rel="noopener noreferrer">Steam Store Page</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Unity Developer</p>
+            <div class="social">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                <a href="mailto:your@email.com" aria-label="Email">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>
+
+

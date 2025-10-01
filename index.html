@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Unity Developer Portfolio</title>
+    <meta name="description" content="Unity developer portfolio showcasing real-time 3D and gameplay demos.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <!-- 网站图标 favicon 文件位置：assets/favicon.svg -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="brand" href="index.html">Unity Dev</a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="resume.html">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Hi, I'm <span class="name">Shirley</span></h1>
+            <p>Unity Developer with a hacker's curiosity and a designer's mindset.<br>I build systems, craft gameplay, and keep exploring 'what if.'</p>
+            <p class="guide">Scroll down to see my projects <span class="arrow">↓</span></p>
+            <div class="hero-buttons">
+                <a class="btn btn-primary" href="#projects">View Projects</a>
+                <a class="btn btn-outline" href="resume.html">View Resume</a>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="projects" class="projects" aria-labelledby="projects-heading">
+            <div class="section-head">
+                <h2 id="projects-heading">Projects</h2>
+                <p>Click on projects to view detail pages.</p>
+            </div>
+            <div class="grid" id="projects-grid">
+                <!-- 卡片通过静态 HTML 示例与 JS 可扩展加载 -->
+
+                <!-- 第1个项目卡片：Blood Rising (Indie Game on Steam) -->
+                <article class="card">
+                    <!-- 缩略图点击跳到项目详情页：href -->
+                    <a class="thumb" href="projects/project-2.html" aria-label="Open project details">
+                        <!-- 缩略图图片地址修改这里：img src -->
+                        <img src="assets/img/projects/p2/thumb.png" alt="Project 2 thumbnail" loading="lazy">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <!-- 标题与详情页链接修改这里：a 文本与 href -->
+                            <a href="projects/project-2.html">Indie Game on Steam (Team Project): Blood Rising</a>
+                        </h3>
+                        <p class="card-desc">A roguelike game with card battles as its core. Players need to play as a vampire ancestor to resist the attacks of a large number of adventurers and defeat three great heroes to achieve ultimate victory.</p>
+                        <ul class="tags">
+                            <li>Unity 2D</li><li>Event driven system</li><li>MVC</li>
+                        </ul>
+                    </div>
+                </article>
+                <!-- 第1个项目卡片结束 -->
+
+                <!-- 第2个项目卡片：Wilderness Elite (FPS Game) -->
+                <article class="card">
+                    <!-- 缩略图点击跳到项目详情页：href -->
+                    <a class="thumb" href="projects/project-3.html" aria-label="Open project details">
+                        <!-- 缩略图图片地址修改这里：img src -->
+                        <img src="assets/img/projects/p3/thumb.png" alt="Project 3 thumbnail" loading="lazy">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <!-- 标题与详情页链接修改这里：a 文本与 href -->
+                            <a href="projects/project-3.html">Multiplayer Online FPS Game: Wilderness Elite</a>
+                        </h3>
+                        <p class="card-desc">Inspired by PUBG Battlegrounds and Counter-strike, I wanted to experiment with building a multiplayer online game and explore writing the server-side with this project.</p>
+                        <ul class="tags">
+                            <li>AI behavior</li><li>Backend development</li><li>Chatroom system</li><li>Photon</li><li>SQL</li>
+                        </ul>
+                    </div>
+                </article>
+                <!-- 第2个项目卡片结束 -->
+
+                <!-- 第3个项目卡片：Interstellar 2025 (3D Adventure) -->
+                <article class="card">
+                    <!-- 缩略图点击跳到项目详情页：href -->
+                    <a class="thumb" href="projects/project-1.html" aria-label="Open project details">
+                        <!-- 缩略图图片地址修改这里：img src -->
+                        <img src="assets/img/projects/p1/cover.webp" alt="Project 1 thumbnail" loading="lazy">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <!-- 标题与详情页链接修改这里：a 文本与 href -->
+                            <a href="projects/project-1.html">3D Adventure Game: Interstellar 2025</a>
+                        </h3>
+                        <p class="card-desc">Single-player first-person exploration game. In 2025, entering the first year of the interstellar era, you pilot a spaceship...</p>
+                        <ul class="tags">
+                            <li>Unity 3D</li><li>Minimap</li><li>Audio System</li><li>Ranking Data System</li>
+                        </ul>
+                    </div>
+                </article>
+                <!-- 第3个项目卡片结束 -->
+
+                <!-- 第4个项目卡片：VR Bowling -->
+                <article class="card">
+                    <a class="thumb" href="projects/project-4.html" aria-label="Open project details">
+                        <img src="assets/img/projects/p4/thumb.png" alt="Project 4 thumbnail" loading="lazy">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a href="projects/project-4.html">VR Bowling using Meta Quest 3s</a>
+                        </h3>
+                        <p class="card-desc">An Exploration of VR Game Development</p>
+                        <ul class="tags">
+                            <li>VR</li><li>C#</li><li>Gameplay</li>
+                        </ul>
+                    </div>
+                </article>
+                <!-- 第4个项目卡片结束 -->
+
+                <!-- Project 5 and 6 temporarily hidden - uncomment when ready -->
+                <!--
+                <article class="card">
+                    <a class="thumb" href="projects/project-5.html" aria-label="Open project details">
+                        <img src="assets/img/projects/p5/thumb.svg" alt="Project 5 thumbnail" loading="lazy">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a href="projects/project-5.html">Physics Sandbox</a>
+                        </h3>
+                        <p class="card-desc">Interactive physics playground featuring constraints, ragdolls, and destructibles.</p>
+                        <ul class="tags">
+                            <li>Physics</li><li>C#</li><li>Optimization</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <a class="thumb" href="projects/project-6.html" aria-label="Open project details">
+                        <img src="assets/img/projects/p6/thumb.svg" alt="Project 6 thumbnail" loading="lazy">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <a href="projects/project-6.html">UI Toolkit Dashboard</a>
+                        </h3>
+                        <p class="card-desc">Modular UI built with Unity UI Toolkit and data-driven panels.</p>
+                        <ul class="tags">
+                            <li>UI Toolkit</li><li>C#</li><li>UX</li>
+                        </ul>
+                    </div>
+                </article>
+                -->
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <section id="blogs" class="blogs" aria-labelledby="blogs-heading">
+            <div class="section-head">
+                <h2 id="blogs-heading">Blogs</h2>
+                <p>Technical insights and development journey.</p>
+            </div>
+            <div class="blog-grid">
+                <!-- Blog posts will be added here -->
+                <article class="blog-card">
+                    <a class="blog-thumb" href="blogs/reflections-on-game-design.html" aria-label="Read blog post">
+                        <img src="assets/img/blogs/game-design-book-cover-thumb.jpg" alt="The Art of Game Design book cover" loading="lazy">
+                    </a>
+                    <div class="blog-content">
+                        <h3 class="blog-title">
+                            <a href="blogs/reflections-on-game-design.html">Reflections on The Art of Game Design: A Book of Lenses</a>
+                        </h3>
+                        <p class="blog-desc">This book really left a strong impression on me. The Art of Game Design is not just another "how to make games" manual — it's more like having a long conversation with a mentor who keeps asking you the real question: "What makes a game truly fun?"</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">Jan 2025</span>
+                            <span class="blog-category">Game Design</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Unity Developer</p>
+            <div class="social">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                <a href="mailto:shijiayyy@gmail.com" aria-label="Email">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Procedural Terrain Generation - Project Details</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <!-- 网站图标 favicon 文件位置：../assets/favicon.svg -->
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="brand" href="../index.html">Unity Dev</a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="../resume.html">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container readable">
+        <section class="detail-hero">
+            <h1>Year of Interstellar 2025</h1>
+            <!-- 替换为该项目的视频 ID：将 VIDEO_ID 改为你的 YouTube 视频 ID -->
+            <div class="video-embed">
+                <iframe 
+                  src="https://www.youtube-nocookie.com/embed/DQXviuUeKRQ?rel=0&modestbranding=1"
+                  title="3D Adventure Game: Interstellar 2025"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            <p class="small">If the embedded video doesn’t load, try another browser, or open it directly on YouTube:
+              <a href="https://www.youtube.com/watch?v=DQXviuUeKRQ" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=DQXviuUeKRQ</a>
+            </p>
+        </section>
+
+        <section class="section-block">
+            <h2>Inspiration</h2>
+            <p class="small"> In 2024, I came across numerous reports and videos suggesting possible signs of life on Mars, along with intriguing UFO and UAP footage. These ideas sparked my imagination and inspired me to create a game that blends cosmic mystery with a futuristic setting. The result is a concept rooted in a modern cyberpunk city, where players pilot a spacecraft to embark on daring interstellar adventures.</p>
+        </section>
+
+        <section class="section-block">
+            <h2>Overview</h2>
+            <p class="small">Briefly summarize the game experience, genre, and core loop. Explain what players do minute-to-minute and why it is engaging.</p>
+        </section>
+
+        <section class="section-block">
+            <h2>Features</h2>
+            <ul>
+                <li>Core loop: exploration, encounters, and iterative upgrades</li>
+                <li>Distinct mechanics or systems unique to this project</li>
+                <li>Art direction and audio identity highlights</li>
+                <li>Target platforms and current development status</li>
+            </ul>
+        </section>
+
+        <section class="section-block">
+            <h2>Tech & Features</h2>
+            <ul>
+                <li>Layered Perlin/Worley noise with adjustable octaves</li>
+                <li>Compute shaders for terrain height, normals, and LOD data</li>
+                <li>Chunked LOD, frustum culling, and streaming</li>
+                <li>Runtime parameter panel for live tuning</li>
+            </ul>
+        </section>
+
+        <section class="section-block">
+            <h2>Walkthrough</h2>
+            <div class="walkthrough">
+                <div class="walk-item">
+                    <div class="walk-img" aria-label="Screenshot placeholder"></div>
+                    <div class="walk-text">
+                        <h3>Generator Overview</h3>
+                        <p>High-level pipeline of terrain generation and how chunks are managed.</p>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <div class="walk-img" aria-label="Screenshot placeholder"></div>
+                    <div class="walk-text">
+                        <h3>Noise Composition</h3>
+                        <p>How base noise layers blend to form believable macro and micro shapes.</p>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <div class="walk-img" aria-label="Screenshot placeholder"></div>
+                    <div class="walk-text">
+                        <h3>GPU Acceleration</h3>
+                        <p>Compute shader kernels used for height field and normal generation.</p>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <div class="walk-img" aria-label="Screenshot placeholder"></div>
+                    <div class="walk-text">
+                        <h3>Runtime Controls</h3>
+                        <p>Parameters exposed for quick iteration and visual feedback in-editor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Unity Developer</p>
+            <div class="social">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                <a href="mailto:your@email.com" aria-label="Email">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/main.js"></script>
+</body>
+</html>
+
+

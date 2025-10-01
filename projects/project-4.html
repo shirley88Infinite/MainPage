@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multiplayer Coop Prototype - Project Details</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <!-- 网站图标 favicon 文件位置：../assets/favicon.svg -->
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="brand" href="../index.html">Unity Dev</a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="../resume.html">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container readable">
+        <section class="detail-hero">
+            <h1>VR Bowling</h1>
+            <div class="video-embed" aria-label="Project video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <h2>Inspiration</h2>
+            <p class="small">Explain the inspiration for a cooperative experience and the teamwork dynamics you want to highlight.</p>
+        </section>
+
+        <section class="section-block">
+            <h2>Overview</h2>
+            <p class="small">Summarize the game mode, match flow, and how players collaborate to overcome challenges.</p>
+        </section>
+
+        <section class="section-block">
+            <h2>Features</h2>
+            <ul>
+                <li>Session flow and lobby management</li>
+                <li>Synchronization features and authority model</li>
+                <li>Cooperative mechanics and roles</li>
+                <li>Networking stack and scalability notes</li>
+            </ul>
+        </section>
+
+        <section class="section-block">
+            <h2>Tech & Features</h2>
+            <ul>
+                <li>Unity Netcode (NGO) client-host model with RPCs</li>
+                <li>Snapshot interpolation and basic lag compensation</li>
+                <li>Lobby flow, matchmaking stub, and session controls</li>
+                <li>Synchronization for movement and key actions</li>
+            </ul>
+        </section>
+
+        <section class="section-block">
+            <h2>Walkthrough</h2>
+            <div class="walkthrough">
+                <div class="walk-item">
+                    <div class="walk-img"></div>
+                    <div class="walk-text">
+                        <h3>Lobby UI</h3>
+                        <p>Joining/creating sessions and player ready states.</p>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <div class="walk-img"></div>
+                    <div class="walk-text">
+                        <h3>Movement Sync</h3>
+                        <p>Ensuring smooth motion across clients with interpolation.</p>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <div class="walk-img"></div>
+                    <div class="walk-text">
+                        <h3>RPC Actions</h3>
+                        <p>Key events triggered reliably with server authority.</p>
+                    </div>
+                </div>
+                <div class="walk-item">
+                    <div class="walk-img"></div>
+                    <div class="walk-text">
+                        <h3>Session Control</h3>
+                        <p>Host migration and basic reconnect strategies (future work).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Unity Developer</p>
+            <div class="social">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                <a href="mailto:your@email.com" aria-label="Email">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/main.js"></script>
+</body>
+</html>
+
+

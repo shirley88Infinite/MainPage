@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#0b0f14"/>
+  <rect x="40" y="40" width="1200" height="640" rx="24" fill="#0e141b" stroke="#1e2a3a"/>
+  <text x="640" y="370" fill="#3B82F6" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="48" text-anchor="middle">Project 5 Thumbnail</text>
+</svg>
+
+
