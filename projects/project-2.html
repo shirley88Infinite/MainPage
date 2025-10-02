@@ -29,32 +29,39 @@
         </section>
 
         <section class="section-block">
+            <h2>Available on Steam</h2>
+            <div class="steam-widget">
+                <iframe src="https://store.steampowered.com/widget/3178660/" frameborder="0" width="646" height="190"></iframe>
+            </div>
+            <p class="small">Visit the <a href="https://store.steampowered.com/app/3178660/Blood_Rising/" target="_blank" rel="noopener noreferrer">Steam Store Page</a> to learn more or add to your wishlist.</p>
+        </section>
+
+        <section class="section-block">
             <h2>Inspiration</h2>
-            <p class="small">Write a short paragraph about the concept, references, and the experience you aim to deliver in this team project.</p>
+            <p class="small">During that time I was playing Hearthstone, I was inspired by its mix of deck-building strategy and fun RNG moments that kept every match fresh. I started wondering if I could create my own card game, and together with a designer friend we came up with a vampire theme infused with new elements.</p>
         </section>
 
         <section class="section-block">
             <h2>Overview</h2>
             <p class="small">This is a roguelike game with card battles as its core. Players need to play as a vampire ancestor to resist the attacks of a large number of adventurers and defeat three great heroes to achieve ultimate victory.</p>
-        </section>
-
-        <section class="section-block">
-            <h2>Features</h2>
+            <p class="small"><strong>My Role:</strong> I worked with a teammate on the programming side, where my main responsibility was implementing the core combat system. In addition, I collaborated with the art team to experiment with AI-assisted asset design and generation, testing its potential for unique usability in the project.</p>
+            
+            <h3>Core Gameplay</h3>
             <ul>
-                <li>Core loop and combat/exploration focus</li>
-                <li>Co-op systems and team-based mechanics</li>
-                <li>Unique enemy design, bosses, or abilities</li>
-                <li>Technical stack and target platforms</li>
+                <li>Defeat enemies using your skills and convert them into servants to fight alongside you.</li>
+                <li>Servants can evolve into stronger units by defeating more enemies.</li>
+                <li>Enemies drop items and souls, which can be used to boost combat or upgrade skills.</li>
+                <li>Survive waves of heroes and adventurers—victory comes when all enemies are defeated.</li>
             </ul>
         </section>
 
         <section class="section-block">
             <h2>Tech & Features</h2>
             <ul>
-                <li>Input buffering and state prioritization</li>
-                <li>Animator-driven transitions with root motion</li>
-                <li>Modular action system and interruption handling</li>
-                <li>Separated air/ground layers with shared logic</li>
+                <li>Implemented a simple turn-based system to manage player and enemy actions.</li>
+                <li>Designed a basic card system with drag-and-drop interactions and collision-based effects.</li>
+                <li>Built win/lose conditions and a minimal UI flow to support the core gameplay loop.</li>
+                <li>Added a lightweight multi-language system, allowing the game to be easily localized into different languages.</li>
             </ul>
         </section>
 
@@ -62,31 +69,30 @@
             <h2>Walkthrough</h2>
             <div class="walkthrough">
                 <div class="walk-item">
-                    <div class="walk-img"></div>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p2/walk1.png" alt="State Diagram" loading="lazy">
+                    </div>
                     <div class="walk-text">
-                        <h3>State Diagram</h3>
-                        <p>Overview of action states and key transitions.</p>
+                        <h3>Player's Turn – Attack</h3>
+                        <p>The player uses skills or cards to launch an attack against enemy units, starting the combat round.</p>
                     </div>
                 </div>
                 <div class="walk-item">
-                    <div class="walk-img"></div>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p2/walk2.png" alt="Input Buffer" loading="lazy">
+                    </div>
                     <div class="walk-text">
-                        <h3>Input Buffer</h3>
-                        <p>How inputs are queued and consumed for responsiveness.</p>
+                        <h3>Enemy Defeated – Loot Drop</h3>
+                        <p>When an enemy is defeated, it may randomly drop items or souls, which can be collected to strengthen the player's units or abilities.</p>
                     </div>
                 </div>
                 <div class="walk-item">
-                    <div class="walk-img"></div>
-                    <div class="walk-text">
-                        <h3>Root Motion</h3>
-                        <p>Synchronizing animation movement with gameplay controls.</p>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p2/walk3.png" alt="Root Motion" loading="lazy">
                     </div>
-                </div>
-                <div class="walk-item">
-                    <div class="walk-img"></div>
                     <div class="walk-text">
-                        <h3>Interrupts</h3>
-                        <p>Handling hit-stun and other forced state changes.</p>
+                        <h3>Next Turn – Enemy Strikes Back</h3>
+                        <p>After the player's action, the turn passes to the enemy side, and the opponent launches its counterattack.</p>
                     </div>
                 </div>
             </div>

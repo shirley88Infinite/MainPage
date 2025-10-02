@@ -30,65 +30,59 @@
 
         <section class="section-block">
             <h2>Inspiration</h2>
-            <p class="small">Explain the inspiration for a cooperative experience and the teamwork dynamics you want to highlight.</p>
+            <p class="small">The idea for VR Bowling came after attending a VR-focused seminar, where I saw how schools were using VR games to drive educational gamification. That sparked the thought: why not experiment with the same concept through entertainment? I decided to try developing a bowling game using Meta Quest 3S as my first hands-on VR project.</p>
         </section>
 
         <section class="section-block">
             <h2>Overview</h2>
-            <p class="small">Summarize the game mode, match flow, and how players collaborate to overcome challenges.</p>
+            <p class="small">VR Bowling is a simple and casual VR game where players grab a bowling ball with motion controls, throw it down the lane, and score points. It's designed to be intuitive, fun, and accessible for anyone trying out VR.</p>
         </section>
 
-        <section class="section-block">
-            <h2>Features</h2>
-            <ul>
-                <li>Session flow and lobby management</li>
-                <li>Synchronization features and authority model</li>
-                <li>Cooperative mechanics and roles</li>
-                <li>Networking stack and scalability notes</li>
-            </ul>
-        </section>
 
         <section class="section-block">
             <h2>Tech & Features</h2>
             <ul>
-                <li>Unity Netcode (NGO) client-host model with RPCs</li>
-                <li>Snapshot interpolation and basic lag compensation</li>
-                <li>Lobby flow, matchmaking stub, and session controls</li>
-                <li>Synchronization for movement and key actions</li>
             </ul>
+        </section>
+
+        <section class="section-block">
+            <h2>Notes & Insights</h2>
+            <div class="insights">
+                <div class="insight-item">
+                    <h3>1. Avoid relying too heavily on Meta's official VR plugins</h3>
+                    <p>Even on Meta Quest 3S, I found the official plugins to be unstable. During environment setup, each time I modified a script and recompiled, the headset would often black screen. This issue persisted across Unity 2023 and Unity 6. Switching to Unity's official XR Interaction Toolkit resolved many of these crashes and errors.</p>
+                </div>
+                
+                <div class="insight-item">
+                    <h3>2. Simpler logic, but critical comfort design</h3>
+                    <p>Compared to traditional games, VR projects often have simpler game logic and data management. However, preventing motion sickness is absolutely essential. This means carefully designing locomotion, camera movement, and interaction flow.</p>
+                </div>
+                
+                <div class="insight-item">
+                    <h3>3. Comfort-first VR design practices</h3>
+                    <ul>
+                        <li>Prefer teleportation or snap-turn systems over smooth continuous movement.</li>
+                        <li>Keep camera acceleration consistent; avoid sudden shakes or speed changes.</li>
+                        <li>Align motion with player input — never move the camera without clear user action.</li>
+                        <li>Maintain high and stable frame rates (ideally 72–90+ FPS) to minimize discomfort.</li>
+                        <li>Provide options (vignette, FOV reduction) for sensitive players.</li>
+                    </ul>
+                </div>
+                
+                <div class="insight-item">
+                    <h3>4. Takeaways from development</h3>
+                    <ul>
+                        <li>Stable tools matter more than flashy SDKs — XR Toolkit proved more reliable.</li>
+                        <li>Iteration in VR is slower (deploy–test cycle), so focusing on small, testable features saves time.</li>
+                        <li>Playtesting in short sessions is key — issues with comfort only surface after repeated use.</li>
+                    </ul>
+                </div>
+            </div>
         </section>
 
         <section class="section-block">
             <h2>Walkthrough</h2>
             <div class="walkthrough">
-                <div class="walk-item">
-                    <div class="walk-img"></div>
-                    <div class="walk-text">
-                        <h3>Lobby UI</h3>
-                        <p>Joining/creating sessions and player ready states.</p>
-                    </div>
-                </div>
-                <div class="walk-item">
-                    <div class="walk-img"></div>
-                    <div class="walk-text">
-                        <h3>Movement Sync</h3>
-                        <p>Ensuring smooth motion across clients with interpolation.</p>
-                    </div>
-                </div>
-                <div class="walk-item">
-                    <div class="walk-img"></div>
-                    <div class="walk-text">
-                        <h3>RPC Actions</h3>
-                        <p>Key events triggered reliably with server authority.</p>
-                    </div>
-                </div>
-                <div class="walk-item">
-                    <div class="walk-img"></div>
-                    <div class="walk-text">
-                        <h3>Session Control</h3>
-                        <p>Host migration and basic reconnect strategies (future work).</p>
-                    </div>
-                </div>
             </div>
         </section>
     </main>

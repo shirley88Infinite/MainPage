@@ -29,32 +29,92 @@
         </section>
 
         <section class="section-block">
+            <h2>Source Code</h2>
+            <div class="github-links">
+                <a href="https://github.com/shirley88Infinite/FPSServer" target="_blank" rel="noopener noreferrer" class="github-link">
+                    <div class="github-card">
+                        <h3>Server-side Sample Code (Github)</h3>
+                        <p>Backend networking, database, and server logic implementation</p>
+                        <span class="github-icon">📁</span>
+                    </div>
+                </a>
+                <a href="https://github.com/shirley88Infinite/FPSDemo-Client" target="_blank" rel="noopener noreferrer" class="github-link">
+                    <div class="github-card">
+                        <h3>Client-side Sample Code (Github)</h3>
+                        <p>Unity client, gameplay systems, and UI implementation</p>
+                        <span class="github-icon">📁</span>
+                    </div>
+                </a>
+            </div>
+            <p class="small" style="margin-top: 1rem; color: var(--muted); font-style: italic;">These sample codes are part of an ongoing development process. They're meant to share how the project is being built, not to be full, runnable builds just yet.</p>
+        </section>
+
+        <section class="section-block">
             <h2>Inspiration</h2>
-            <p class="small">Describe the visual references, atmosphere, and pacing that shaped the project’s look and feel.</p>
+            <p class="small">While playing PUBG (PlayerUnknown's Battlegrounds), I got really drawn to how its real-time multiplayer systems worked. It made me curious about what it would take for a solo developer to build something along those lines. I also see a growing demand for online games that bring people together, adding a layer of social interaction beyond just the gameplay.</p>
         </section>
 
         <section class="section-block">
             <h2>Overview</h2>
-            <p class="small">Summarize the game or demo context in which these effects are used and their role in gameplay feedback.</p>
+            <p class="small">This project is my ongoing journey of building a first-person shooter from the ground up, exploring both gameplay design and multiplayer networking. The development is divided into multiple phases, each targeting a key aspect of modern FPS games:</p>
         </section>
 
         <section class="section-block">
-            <h2>Features</h2>
-            <ul>
-                <li>Key VFX systems and interaction points</li>
-                <li>Post-processing pipeline highlights</li>
-                <li>Performance considerations and budgets</li>
-                <li>Customization or authoring workflow</li>
-            </ul>
+            <h2>Development Journey</h2>
+            <div class="development-phases">
+                <div class="phase">
+                    <h3>Phase I – Single Player FPS Prototype <em>(Completed)</em></h3>
+                    <ul class="small phase-features">
+                        <li><span class="checkmark">✓</span> Built a standalone FPS demo focusing on the core gameplay loop (movement, shooting, weapon handling).</li>
+                        <li><span class="checkmark">✓</span> Implemented weapon spawning from a JSON-based configuration system.</li>
+                        <li><span class="checkmark">✓</span> Added basic player controls (walk, crouch, run, fire) with blend tree animations.</li>
+                        <li><span class="checkmark">✓</span> Created a pickup system where players can detect and equip weapons from the environment.</li>
+                        <li><span class="checkmark">✓</span> Introduced enemy AI with basic behaviors: patrolling, shooting, attacking, dodging, and retreating.</li>
+                        <li><span class="checkmark">✓</span> Developed a scoring and ranking system, including result calculation and a leaderboard display.</li>
+                        <li><span class="checkmark">✓</span> Established a foundation for combat logic and UI, preparing for later multiplayer features.</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>Phase II – Networking & Server Integration <em>(Completed)</em></h3>
+                    <ul class="small phase-features">
+                        <li><span class="checkmark">✓</span> Built a custom TCP socket server with C# to handle multiple client connections.</li>
+                        <li><span class="checkmark">✓</span> Implemented client-side networking module in Unity, including async connect, message send/receive, and Google Protobuf serialization.</li>
+                        <li><span class="checkmark">✓</span> Designed a custom packet protocol to solve sticky/fragmented packets, supporting login, register, and gameplay messages.</li>
+                        <li><span class="checkmark">✓</span> Integrated MySQL for persistent account data storage and secure login/registration, with Navicat used for database visualization and management.</li>
+                        <li><span class="checkmark">✓</span> Optimized performance with message batching, buffer management, and disabled Nagle's algorithm for low-latency gameplay.</li>
+                        <li><span class="checkmark">✓</span> Designed a modular network communication framework, separating transport, serialization, and game logic layers for maintainability.</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>Phase III – Social Features & Communication <em>(In Progress)</em></h3>
+                    <ul class="small phase-features">
+                        <li><span class="in-progress">🔄</span> Establishing a chat system with storage for account credentials, nicknames, levels, and avatars.</li>
+                        <li><span class="in-progress">🔄</span> Developing a friend system to support account search, friend requests, and contact management.</li>
+                        <li><span class="in-progress">🔄</span> Adding private messaging between friends and a public lobby chat to enhance player communication.</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h3>Phase IV – Real-Time Multiplayer & Voice Communication <em>(Planned)</em></h3>
+                    <ul class="small phase-features">
+                        <li><span class="planned">📋</span> Integrating Photon PUN2 SDK to enable real-time multiplayer networking.</li>
+                        <li><span class="planned">📋</span> Implementing lobby and room systems, allowing players to create, join, and manage multiplayer sessions.</li>
+                        <li><span class="planned">📋</span> Synchronizing player states and gameplay events across the network for smooth online experiences.</li>
+                        <li><span class="planned">📋</span> Adding in-game voice chat, leveraging Unity's microphone API and Photon Voice for real-time communication.</li>
+                    </ul>
+                </div>
+            </div>
         </section>
+
+
 
         <section class="section-block">
             <h2>Tech & Features</h2>
-            <ul>
-                <li>GPU particle systems with vector fields</li>
-                <li>Particle-mesh interactions and collisions</li>
-                <li>Volumetric fog, DOF, and tonemapping adjustments</li>
-                <li>Fine-tuned bloom and glare for cinematic looks</li>
+            <ul class="tech-features">
+                <li>Core FPS mechanics with AI-driven enemies</li>
+                <li>Custom networking with TCP + Protobuf + MySQL</li>
+                <li>Social features: accounts, friends, chat system</li>
+                <li>Multiplayer voice & real-time lobby (Photon PUN2)</li>
+                <li>Tools: Unity (URP), C#, Navicat, GitHub</li>
             </ul>
         </section>
 
@@ -62,34 +122,43 @@
             <h2>Walkthrough</h2>
             <div class="walkthrough">
                 <div class="walk-item">
-                    <div class="walk-img"></div>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p3/walk1.png" alt="Emitter Setup" loading="lazy">
+                    </div>
                     <div class="walk-text">
-                        <h3>Emitter Setup</h3>
-                        <p>Configuring particle emitters for varied motion and scale.</p>
+                        <h3>User Registration System</h3>
+                        <p>Account information entered by users will be recorded and stored on the server for persistent data management.</p>
                     </div>
                 </div>
                 <div class="walk-item">
-                    <div class="walk-img"></div>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p3/walk2.png" alt="Vector Fields" loading="lazy">
+                    </div>
                     <div class="walk-text">
-                        <h3>Vector Fields</h3>
-                        <p>Driving complex movement patterns with field textures.</p>
+                        <h3>Combat Arena & Weapon Spawning</h3>
+                        <p>Entering the combat scene where weapons are randomly generated on the battlefield. Players can pick up weapons like electric shock weapons by interacting with them.</p>
                     </div>
                 </div>
                 <div class="walk-item">
-                    <div class="walk-img"></div>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p3/walk3.png" alt="Post FX" loading="lazy">
+                    </div>
                     <div class="walk-text">
-                        <h3>Post FX</h3>
-                        <p>Balancing bloom, glare, and color grading for clarity.</p>
+                        <h3>Player Controls & Weapon System</h3>
+                        <p>Control movement with keyboard (forward/backward) or on-screen joystick. Mouse controls camera rotation and vertical aiming. Use the fire button on the right side to shoot, with each weapon having limited ammunition.</p>
                     </div>
                 </div>
                 <div class="walk-item">
-                    <div class="walk-img"></div>
+                    <div class="walk-img">
+                        <img src="../assets/img/projects/p3/walk4.png" alt="Performance" loading="lazy">
+                    </div>
                     <div class="walk-text">
-                        <h3>Performance</h3>
-                        <p>Maintaining frame rate with culling and particle budget.</p>
+                        <h3>AI Combat & Data Updates</h3>
+                        <p>Use crosshair to aim at patrolling AI enemies. When enemies are defeated, data updates automatically and the enemy count on the battlefield decreases.</p>
                     </div>
                 </div>
             </div>
+            <p class="small" style="margin-top: 1.5rem; text-align: center; color: var(--muted); font-style: italic;">More features coming up</p>
         </section>
     </main>
 

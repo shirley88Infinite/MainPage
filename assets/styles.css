@@ -125,6 +125,10 @@ body:before {
 .blog-cover { margin: 1.5rem 0; text-align: center; }
 .blog-cover img { max-width: 300px; width: 100%; height: auto; border-radius: var(--radius-sm); box-shadow: var(--shadow); }
 
+/* steam widget */
+.steam-widget { margin: 1rem 0; text-align: center; }
+.steam-widget iframe { max-width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow); }
+
 @media (min-width: 640px) {
   .blog-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -174,7 +178,23 @@ html { scroll-behavior: smooth; }
 
 .walkthrough { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 .walk-item { display: grid; grid-template-columns: 1fr; gap: .8rem; align-items: start; }
-.walk-img { width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--border); aspect-ratio: 16/9; background: #0c1117; }
+.walk-img { 
+    width: 100%; 
+    border-radius: var(--radius-sm); 
+    border: 1px solid var(--border); 
+    aspect-ratio: 16/9; 
+    background: #0c1117; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.walk-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+}
 .walk-text h3 { margin: 0 0 .3rem; font-size: 1.05rem; }
 .walk-text p { margin: 0; color: var(--muted); }
 
@@ -197,6 +217,218 @@ html { scroll-behavior: smooth; }
 }
 @media (min-width: 960px) {
   .card { grid-column: span 4; }
+}
+
+/* GitHub Links Styles */
+.github-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 600px) {
+    .github-links {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.github-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+}
+
+.github-link:hover {
+    transform: translateY(-2px);
+}
+
+.github-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.github-link:hover .github-card {
+    border-color: var(--brand);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.github-card h3 {
+    margin: 0 0 0.5rem;
+    color: var(--brand);
+    font-size: 1.1rem;
+}
+
+.github-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.github-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+/* Development Journey Styles */
+.development-phases {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.phase {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.phase:hover {
+    border-color: var(--brand);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.phase h3 {
+    margin: 0 0 0.5rem;
+    color: var(--brand);
+    font-size: 1.1rem;
+}
+
+.phase p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.phase-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.phase-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0;
+}
+
+.phase-features li:last-child {
+    margin-bottom: 0;
+}
+
+.checkmark {
+    color: #10b981;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.in-progress {
+    color: #f59e0b;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.planned {
+    color: #6b7280;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+/* Tech Features Styles */
+.tech-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.tech-features li:last-child {
+    margin-bottom: 0;
+}
+
+/* Notes & Insights Styles */
+.insights {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.insight-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.insight-item:hover {
+    border-color: var(--brand);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.insight-item h3 {
+    margin: 0 0 0.75rem;
+    color: var(--brand);
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.insight-item p {
+    margin: 0 0 0.5rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.insight-item p:last-child {
+    margin-bottom: 0;
+}
+
+.insight-item ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.insight-item li {
+    margin-bottom: 0.4rem;
+}
+
+.insight-item li:last-child {
+    margin-bottom: 0;
 }
 
 /* 让首页下方露出项目区的一部分，增强下滑引导（桌面端） */
