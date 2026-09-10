@@ -455,3 +455,7 @@ html { scroll-behavior: smooth; }
 .blog-article pre code { white-space: pre; overflow-wrap: normal; }
 .blog-article blockquote { margin: 1.5rem 0; padding: .2rem 1rem; border-left: 3px solid var(--brand); color: var(--muted); }
 .blog-article hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* Landscape technical blog covers */
+.blog-thumb-wide img { display: block; height: auto; width: 100%; }
+.blog-cover-wide img { display: block; max-width: 100%; height: auto; }
