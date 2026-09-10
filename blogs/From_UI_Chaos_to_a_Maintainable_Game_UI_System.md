@@ -180,7 +180,3 @@ UI → application/service layer → domain data / persistence / backend
 ```
 
 When that direction is protected, changing a visual layout does not threaten business rules, changing a backend implementation does not require rewriting panels, and new team members can quickly identify which layer owns a problem. That is the real transition from a collection of screens to a maintainable UI system.
-
----
-
-*This article is a technical interpretation and summary of a Chinese game-UI architecture video, focused on applying its ideas to practical Unity development.*
