@@ -443,3 +443,15 @@ html { scroll-behavior: smooth; }
 }
 
 
+
+/* Long-form technical articles */
+.blog-article { overflow-wrap: anywhere; }
+.blog-article h2 { margin: 2rem 0 .75rem; line-height: 1.35; }
+.blog-article p, .blog-article li { line-height: 1.8; }
+.blog-article li { margin-bottom: .4rem; }
+.blog-article pre { max-width: 100%; overflow-x: auto; padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); line-height: 1.6; }
+.blog-article code { font-family: Consolas, monospace; font-size: .9em; }
+.blog-article :not(pre) > code { padding: .1em .3em; border-radius: .25rem; background: rgba(255,255,255,.06); }
+.blog-article pre code { white-space: pre; overflow-wrap: normal; }
+.blog-article blockquote { margin: 1.5rem 0; padding: .2rem 1rem; border-left: 3px solid var(--brand); color: var(--muted); }
+.blog-article hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }

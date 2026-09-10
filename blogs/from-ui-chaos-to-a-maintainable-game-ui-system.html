@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From UI Chaos to a Maintainable Game UI System | Unity Developer</title>
+    <meta name="description" content="A practical Unity UI architecture: lifecycle policies for screens, popups, toasts, and HUDs, with services and view models keeping business rules independent.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="apple-touch-icon" href="../assets/favicon.ico">
+    
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="../index.html" class="brand">Unity Developer</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../resume.html">Resume</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="detail-hero">
+            <div class="container readable">
+                <a href="../index.html#blogs">← Back to Blogs</a>
+                <h1>From UI Chaos to a Maintainable Game UI System</h1>
+                <div class="blog-meta">
+                    <time class="blog-date" datetime="2026-09-03">September 3, 2026</time>
+                    <span class="blog-category">Unity Architecture</span>
+                </div>
+            </div>
+        </section>
+        <section class="section-block">
+            <article class="container readable blog-article">
+<p>Small game projects rarely begin with a UI architecture problem. They begin with a start button, a menu, and a few callbacks. At that point, almost any implementation appears to work.</p>
+<p>The problem arrives through iteration. A pause screen becomes a revive flow. A result screen gains rewards. Then come settings, shops, onboarding, confirmations, network errors, achievement notices, and multiple role-specific dashboards. Before long, panels begin opening other panels directly, buttons perform unrelated operations, and a simple change becomes a regression risk across several systems.</p>
+<p>This article describes a practical way to keep that growth under control: treat UI as a <strong>presentation system</strong>, organize it by lifecycle, and keep business decisions outside it.</p>
+<h2>The Failure Mode: the "Everything Button"</h2>
+<p>A familiar anti-pattern is a button callback that simultaneously:</p>
+<ul>
+<li>closes a result screen;</li>
+<li>opens the home screen;</li>
+<li>stops or starts gameplay;</li>
+<li>plays music;</li>
+<li>changes player data; and</li>
+<li>writes a save file.</li>
+</ul>
+<p>None of these responsibilities are inherently related. They happen to occur after one click, but that does not make the UI button their rightful owner. Once this pattern spreads, changing navigation means reasoning about gameplay, audio, persistence, and UI at the same time.</p>
+<p>The architectural boundary is simple:</p>
+<blockquote>
+<p>UI decides <strong>how something is presented</strong>. Business flow decides <strong>why it should be presented</strong>.</p>
+</blockquote>
+<p>For example, a training-completion service may decide that a completion dialog should be shown. The UI system loads it, places it on the correct layer, plays its opening animation, and later disposes of it. The UI manager should not calculate scores, grant rewards, or save training progress.</p>
+<h2>One UI Entry Point, Several Lifecycle Policies</h2>
+<p><code>UIManager</code> should be a façade for UI infrastructure, not a god object. It is a useful single entry point for callers, while internally delegating to managers with different lifetime rules.</p>
+<pre><code class="language-text">UIManager
+├── ScreenManager     Full-screen, mutually exclusive views
+├── PopupManager      Modal views with stack navigation
+├── ToastManager      Short-lived notices with queue scheduling
+└── HudManager        Persistent widgets and overlays
+</code></pre>
+<p>Whether these are child GameObjects under a <code>UIManager</code> root or plain C# services is an implementation choice. The important part is that a caller does not instantiate arbitrary prefabs or invent a new lifecycle policy for every feature.</p>
+<h2>1. Screens: Replacement, Not Accumulation</h2>
+<p>A <strong>Screen</strong> is a primary, full-screen destination: Home, Gameplay, Inventory, Shop, or a role-specific dashboard.</p>
+<p>Its rule is mutual exclusion: normally one primary screen is visible at a time. Opening a new screen replaces the old screen after the required transition.</p>
+<pre><code class="language-csharp">UIManager.Instance.OpenScreen&lt;TrainingDashboardScreen&gt;(viewModel);
+</code></pre>
+<p>A screen manager owns resource loading, canvas ordering, enter/exit animation, and cleanup. It does <em>not</em> decide whether a user is allowed to open the dashboard. That permission belongs to the application flow, authentication service, or domain service.</p>
+<h2>2. Popups: a Stack for Modal Navigation</h2>
+<p>A <strong>Popup</strong> is a modal interruption or short workflow: Settings, Confirm Delete, Reward Details, or Change Password.</p>
+<p>Popups should use a <strong>stack</strong>, not hard-coded back-navigation:</p>
+<pre><code class="language-text">Dashboard
+  └─ Settings popup
+       └─ Confirm-reset popup
+
+Close Confirm-reset → Settings becomes visible again
+Close Settings      → Dashboard remains
+</code></pre>
+<pre><code class="language-csharp">UIManager.Instance.PushPopup&lt;SettingsPopup&gt;(settingsVm);
+UIManager.Instance.PushPopup&lt;ConfirmResetPopup&gt;(confirmVm);
+UIManager.Instance.PopPopup();
+</code></pre>
+<p>The confirmation popup does not need to know that it was opened from Settings. <code>PopupManager</code> knows the stack order. This prevents a growing web of "when I close, reopen this specific panel" dependencies.</p>
+<h2>3. Toasts: a Queue for Short-Lived Messages</h2>
+<p>A <strong>Toast</strong> is an ephemeral notice: "Progress saved", "Network unavailable", or "Achievement unlocked". It should not participate in screen replacement or popup navigation.</p>
+<p>Toasts normally use a <strong>first-in, first-out queue</strong>:</p>
+<pre><code class="language-text">Show A → A animates and expires → Show B → Show C
+</code></pre>
+<pre><code class="language-csharp">UIManager.Instance.ShowToast(&quot;Progress saved&quot;);
+</code></pre>
+<p>This policy solves common production bugs: two messages overlapping, a message being cut off by a later message, or different systems creating floating-message prefabs without awareness of each other. The toast manager may also add rules such as duplicate suppression, priority notices, or a maximum queue length.</p>
+<h2>4. HUDs and Widgets: Persistent, Data-Driven UI</h2>
+<p>A <strong>HUD</strong> or <strong>Widget</strong> remains visible across a longer context, or is embedded inside another panel. Examples include a player header, a health bar, a network indicator, and a persistent training-progress widget.</p>
+<p>These components should not be recreated for every screen transition. Their main job is to observe a small, well-defined display state and refresh when that state changes.</p>
+<pre><code class="language-csharp">hud.Refresh(new PlayerHeaderViewModel(displayName, avatar, level));
+</code></pre>
+<h2>A Small, Consistent Panel Contract</h2>
+<p>Each panel should expose a small lifecycle contract instead of a collection of feature-specific entry points.</p>
+<pre><code class="language-csharp">public interface IPanel&lt;in TViewModel&gt;
+{
+    void Open(TViewModel viewModel);
+    void Refresh(TViewModel viewModel);
+    void Close();
+}
+</code></pre>
+<ul>
+<li><code>Open</code> receives the complete data needed for initial rendering.</li>
+<li><code>Refresh</code> redraws the view when its display state changes.</li>
+<li><code>Close</code> releases listeners, animations, and transient resources.</li>
+</ul>
+<p>The panel should not search through global managers, query a database, or issue network requests merely to populate itself. Those actions make the panel difficult to test, difficult to reuse, and tightly coupled to its current data source.</p>
+<h2>Read and Write Must Take Different Paths</h2>
+<p>A presentation layer can request an action, but it should not directly mutate domain data.</p>
+<pre><code class="language-text">Button click
+  → Service receives an intention
+  → Service validates and changes domain state
+  → Service returns a result or emits new state
+  → UI maps it to display data and renders feedback
+</code></pre>
+<p>For example, a "Submit Training Attempt" button may call a training service. The service validates the attempt, saves it locally or sends it to the backend, and returns success or a meaningful error. The UI then displays a toast, error popup, or refreshed progress view.</p>
+<p>The distinction matters even in an offline game. Moving validation, persistence, scoring, inventory updates, and backend communication into non-<code>MonoBehaviour</code> services makes those rules independently testable and prevents UI screens from becoming accidental business controllers.</p>
+<h2>Model Is Not View Model</h2>
+<p>Domain data is optimized for rules and storage:</p>
+<pre><code class="language-text">courseId, completedAtUtc, score, attempts
+</code></pre>
+<p>UI needs display-ready information:</p>
+<pre><code class="language-text">&quot;Brake System Fundamentals&quot;, &quot;Completed&quot;, &quot;86%&quot;, progressColor, isLocked
+</code></pre>
+<p>The conversion belongs in a mapping layer that produces a <strong>View Model</strong>. A panel then receives only what it needs to render.</p>
+<pre><code class="language-text">Domain model / API DTO
+        ↓
+View-model mapper
+        ↓
+CourseCardViewModel
+        ↓
+Course-card UI renders it
+</code></pre>
+<p>This avoids every list item independently loading configuration, formatting dates, selecting colors, and deciding red-dot or lock states. When the display rule changes, it changes in one place.</p>
+<h2>A Practical Adoption Strategy</h2>
+<p>An existing Unity project does not need a risky rewrite to benefit from this architecture.</p>
+<ol>
+<li><strong>Stop direct prefab instantiation in new feature code.</strong> Route new screens, popups, and notices through one UI entry point.</li>
+<li><strong>Fix the highest-pain lifecycle first.</strong> If floating messages overlap, introduce a queued <code>ToastManager</code> before redesigning every page.</li>
+<li><strong>Keep new network and persistence calls behind services.</strong> A screen should call an application-facing service, not build HTTP requests itself.</li>
+<li><strong>Introduce View Models at feature boundaries.</strong> Start with complex lists and dashboards, where repeated formatting and state decisions already exist.</li>
+<li><strong>Refactor old screens gradually.</strong> Preserve working UI while enforcing the new rule for new work.</li>
+</ol>
+<p>The goal is not to maximize the number of managers or interfaces. It is to give each kind of UI a lifecycle that matches its actual behavior, and to make the dependency direction predictable:</p>
+<pre><code class="language-text">UI → application/service layer → domain data / persistence / backend
+</code></pre>
+<p>When that direction is protected, changing a visual layout does not threaten business rules, changing a backend implementation does not require rewriting panels, and new team members can quickly identify which layer owns a problem. That is the real transition from a collection of screens to a maintainable UI system.</p>
+<hr />
+<p><em>This article is a technical interpretation and summary of a Chinese game-UI architecture video, focused on applying its ideas to practical Unity development.</em></p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© <span id="year"></span> Unity Developer</p>
+            <div class="social">
+                <a href="https://github.com/yourname" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                <a href="mailto:shijiayyy@gmail.com" aria-label="Email">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/main.js"></script>
+</body>
+</html>
